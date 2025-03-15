@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Frontend React - Search Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é um projeto frontend em React que permite pesquisar e exibir resultados obtidos de uma API backend. A aplicação possui uma página de pesquisa e uma página de resultados com visualização em timeline.
 
-## Available Scripts
+## Instalação
 
-In the project directory, you can run:
+Clone o repositório e instale as dependências:
 
-### `npm start`
+```
+git clone [url-do-seu-repositorio]
+cd [nome-do-diretorio]
+npm install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Execução
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Para iniciar a aplicação:
 
-### `npm test`
+```
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Estrutura do Projeto
 
-### `npm run build`
+### `src/pages/SearchPage.jsx`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Página inicial da aplicação com um formulário de pesquisa.
+- Contém um campo de entrada de texto e um botão de pesquisa
+- Ao submeter a pesquisa, redireciona para a página de resultados com o termo pesquisado
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `src/pages/ResultsPage.jsx`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Página que exibe os resultados da pesquisa em formato de timeline vertical.
+- Obtém o termo pesquisado da URL
+- Faz requisição à API para buscar os resultados
+- Renderiza os resultados usando o componente VerticalTimeline
+- Possui um botão para voltar à página inicial
 
-### `npm run eject`
+### `src/components/TimelineItem.jsx`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Componente que renderiza cada item individual na timeline.
+- Exibe o resumo do resultado
+- Fornece um link para a URL completa da notícia
+- Estilizado para se adequar ao tema escuro da aplicação
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `src/services/api.js`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Módulo responsável pela comunicação com o backend.
+- Define a URL base da API
+- Implementa a função `fetchResults()` para buscar os dados da rota `/results`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Dependências Principais
 
-## Learn More
+- React Router Dom: para navegação entre páginas
+- React Vertical Timeline: para exibição dos resultados em formato de timeline
+- Axios: para requisições HTTP
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Integração com Backend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+O frontend está configurado para se comunicar com um servidor backend rodando em `http://localhost:5000`. Certifique-se de que o servidor backend esteja em execução antes de testar a aplicação.
